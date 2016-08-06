@@ -10,7 +10,8 @@ def searchfunction(searchterm):
         figures = re.findall('<table id="masterBody_ilList_lvList_ctrl0_tblItemList_0" width="815">(.+?)Add to Wish List', info, flags=re.DOTALL)
         figure = {"title": re.findall('<span id="masterBody_ilList_lvList_ctrl0_lblItemName_0">(.+?)<\/span>', figures[0])[0],
                   "price": re.findall('font-weight: bold;">(.+?) yen', figures[0])[0].replace(",", ""),
-                  "stock": ""}
+                  "stock": "",
+                  "source": "1999.co.jp"}
         try:
             re.findall('(Sold Out)', figures[0])[0]
             figure["stock"] = "Sold out"

@@ -14,7 +14,8 @@ def searchfunction(searchterm):
         stock = re.findall('price.</div>.+?<div class=.+?>(.+?)<', stockinfo, flags=re.DOTALL)
         figure = {"title": re.findall('alt="(.+?)" t', figures[0])[0],
                   "price": re.findall('\$(.+)', figures[0])[0].replace(",", ""),
-                  "stock": stock[0]}
+                  "stock": stock[0],
+                  "source": "Playmoya"}
         exchangerate = json.loads(urllib.urlopen("http://api.fixer.io/latest?base=USD").read())
         figure["price"] = str(int(float(figure["price"]) * exchangerate["rates"]["JPY"]))
         return figure

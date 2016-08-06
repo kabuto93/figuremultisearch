@@ -10,7 +10,8 @@ def searchfunction(searchterm):
         figures = re.findall('<td class="product_box">(.+?)</td>', info, flags=re.DOTALL)
         figure = {"title": re.findall('<.+?product_name_list">.+?>(.+?)<', figures[0])[0],
                   "price": re.findall('/span>\\n\\t\\t\\t\\t\\n\\t\\t\\t\\t(.+?) JPY', figures[0])[0].replace(",", ""),
-                  "stock": re.findall('Stock</b>: (.+?) -->', figures[0])[0]}
+                  "stock": re.findall('Stock</b>: (.+?) -->', figures[0])[0],
+                  "source": "AmiAmi"}
         return figure
     except:
         return {"title": "Figure not Found"}

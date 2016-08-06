@@ -10,7 +10,8 @@ def searchfunction(searchterm):
         figures = re.findall('div class="product-block(.+?)cart', info, flags=re.DOTALL)
         figure = {"title": re.findall('title="(.+?)">', figures[0])[0].strip(),
                   "price": re.findall('display: inline;">(.+?)<', figures[0])[0].replace(" ", "")[:-2],
-                  "stock": re.findall('ity">(.+?)<', figures[0])[0]}
+                  "stock": re.findall('ity">(.+?)<', figures[0])[0],
+                  "source": "Big in Japan"}
         return figure
     except:
         return {"title": "Figure not Found"}
