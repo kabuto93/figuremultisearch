@@ -5,7 +5,7 @@ import json
 
 basecur = "JPY"
 targetcur = "USD"
-search = raw_input()
+search = "love live figure"
 
 sites = [amiami, biginjapan, crunchyroll, goodsmilecompany, hlj, kirinhobby, nineteenninetynine, playmoya]
 results = []
