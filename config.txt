@@ -1,0 +1,14 @@
+currency=USD
+sites=amiami,biginjapan,crunchyroll,goodsmilecompany,hlj,kirinhobby,nineteenninetynine,playmoya,mandarake,animeblvd
+
+Sites:
+AmiAmi: amiami
+Big In Japan: biginjapan
+Crunchyroll: crunchyroll
+Good Smile Company: goodsmilecompany
+Hobby Link Japan: hlj
+Kirin Hobby: kirinhobby
+1999.co.jp: nineteenninetynine
+Playmoya: playmoya
+Madarake: mandarake
+Anime Boulevard: animeblvd

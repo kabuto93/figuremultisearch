@@ -1,17 +1,24 @@
-from sites import amiami, biginjapan, crunchyroll, goodsmilecompany, hlj, kirinhobby, nineteenninetynine, playmoya
+from sites import amiami, biginjapan, crunchyroll, goodsmilecompany, hlj, kirinhobby, nineteenninetynine, playmoya, mandarake, animeblvd
 import urllib
 import json
 import sqlite3
 
-
+fh = open("config.txt")
+settings = []
+for line in fh:
+    try:
+        settings.append(line.split("=")[1].strip())
+    except:
+        break
+fh.close()
 basecur = "JPY"
-targetcur = "USD"
+targetcur = settings[0]
 search = raw_input()
 html = '''
     <!DOCTYPE html>
     <html>
     <head lang="en">
-        <title>Matching Game</title>
+        <title>"pagetitle"</title>
         <meta charset="UTF-8">
         <meta name="description" content="Find the odd one out.">
         <meta name="author" content="Steven Rexroth">
@@ -19,6 +26,7 @@ html = '''
     </head>
     <body>
     '''
+html = html.replace('"pagetitle"', search + " results")
 html += '''
 <h1>"search"</h1>
 '''
@@ -27,12 +35,12 @@ conn = sqlite3.connect('figuredb.sqlite')
 cur = conn.cursor()
 cur.execute('''CREATE TABLE IF NOT EXISTS Figures (search TEXT, source TEXT, title TEXT, price TEXT, stock TEXT,image TEXT, PRIMARY KEY(search, source))''')
 
-
-sites = [amiami, biginjapan, crunchyroll, goodsmilecompany, hlj, kirinhobby, nineteenninetynine, playmoya]
+sitesdict = {"amiami": amiami, "biginjapan": biginjapan, "crunchyroll": crunchyroll, "goodsmilecompany": goodsmilecompany,"hlj": hlj, "kirinhobby": kirinhobby, "nineteenninetynine": nineteenninetynine, "playmoya": playmoya, "mandarake": mandarake, "animeblvd": animeblvd}
+sites = settings[1].split(",")
 results = []
 exchangerate = json.loads(urllib.urlopen("http://api.fixer.io/latest?base=" + basecur.upper()).read())
 for item in sites:
-    working = item.searchfunction(search)
+    working = sitesdict[item].searchfunction(search)
     if working["title"] == "Figure not Found":
         continue
     working["price"] = str(round(float(working["price"]) * exchangerate["rates"][targetcur.upper()], 2))
