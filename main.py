@@ -6,9 +6,9 @@ import sqlite3
 
 basecur = "JPY"
 targetcur = "USD"
-search = "re zero kara figure"
+search = raw_input()
 html = '''
-    <! DOCTYPE html>
+    <!DOCTYPE html>
     <html>
     <head lang="en">
         <title>Matching Game</title>
