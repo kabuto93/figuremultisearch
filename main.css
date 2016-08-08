@@ -1,0 +1,15 @@
+img {
+    width:80px;
+}
+td {
+    width: 100px;
+    border: solid 1px black;
+    text-align: center;
+}
+#big {
+    width: 500px;
+}
+#img {
+    width: 80px;
+    border: none;
+}
