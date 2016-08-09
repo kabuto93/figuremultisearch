@@ -1,7 +1,34 @@
-from sites import amiami, biginjapan, crunchyroll, goodsmilecompany, hlj, kirinhobby, nineteenninetynine, playmoya, mandarake, animeblvd
+from sites import amiami, biginjapan, crunchyroll, goodsmilecompany, hlj, kirinhobby, nineteenninetynine, playmoya, mandarake, animeblvd, nipponyassan
 import urllib
 import json
 import sqlite3
+from threading import Thread
+import httplib, sys
+from Queue import Queue
+
+
+global search
+global figurelist
+concurrent = 200
+figurelist = []
+q = Queue(concurrent * 2)
+
+
+def doWork():
+    global search
+    while True:
+        url = q.get()
+        figure = url.searchfunction(search)
+        doSomethingWithResult(figure)
+        q.task_done()
+
+
+def doSomethingWithResult(figure):
+    if figure["title"] == "Figure not Found":
+        pass
+    else:
+        figurelist.append(figure)
+
 
 fh = open("config.txt")
 settings = []
@@ -35,16 +62,26 @@ conn = sqlite3.connect('figuredb.sqlite')
 cur = conn.cursor()
 cur.execute('''CREATE TABLE IF NOT EXISTS Figures (search TEXT, source TEXT, title TEXT, price TEXT, stock TEXT,image TEXT, PRIMARY KEY(search, source))''')
 
-sitesdict = {"amiami": amiami, "biginjapan": biginjapan, "crunchyroll": crunchyroll, "goodsmilecompany": goodsmilecompany,"hlj": hlj, "kirinhobby": kirinhobby, "nineteenninetynine": nineteenninetynine, "playmoya": playmoya, "mandarake": mandarake, "animeblvd": animeblvd}
+sitesdict = {"amiami": amiami, "biginjapan": biginjapan, "crunchyroll": crunchyroll, "goodsmilecompany": goodsmilecompany,"hlj": hlj, "kirinhobby": kirinhobby, "nineteenninetynine": nineteenninetynine, "playmoya": playmoya, "mandarake": mandarake, "animeblvd": animeblvd, "nipponyassan": nipponyassan}
 sites = settings[1].split(",")
+usersites = []
+for i in range(concurrent):
+    t = Thread(target=doWork)
+    t.daemon = True
+    t.start()
+for item in sites:
+    usersites.append(sitesdict[item])
 results = []
 exchangerate = json.loads(urllib.urlopen("http://api.fixer.io/latest?base=" + basecur.upper()).read())
-for item in sites:
-    working = sitesdict[item].searchfunction(search)
-    if working["title"] == "Figure not Found":
-        continue
-    working["price"] = str(round(float(working["price"]) * exchangerate["rates"][targetcur.upper()], 2))
-    results.append([working["source"], working["title"], working["price"], working["stock"], working["image"]])
+try:
+    for item in usersites:
+        q.put(item)
+    q.join()
+except KeyboardInterrupt:
+    sys.exit(1)
+for item in figurelist:
+    item["price"] = str(round(float(item["price"]) * exchangerate["rates"][targetcur.upper()], 2))
+    results.append([item["source"], item["title"], item["price"], item["stock"], item["image"]])
 for item in results:
     print "Site: " + item[0] + " | Item: " + item[1] + " | Price: " + item[2] + targetcur + " | Status: " + item[3]
     cur.execute('''INSERT OR IGNORE INTO Figures (search, source, title, price, stock, image) VALUES ( ?, ?, ?, ?, ?, ? )''', (buffer(search), buffer(item[0]), buffer(item[1]), buffer(item[2]), buffer(item[3]), buffer(item[4])))
