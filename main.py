@@ -1,4 +1,4 @@
-from sites import amiami, biginjapan, crunchyroll, goodsmilecompany, hlj, kirinhobby, nineteenninetynine, playmoya, mandarake, animeblvd, nipponyassan
+from sites import amiami, biginjapan, crunchyroll, goodsmilecompany, hlj, kirinhobby, nineteenninetynine, playmoya, mandarake, animeblvd, nipponyassan, animefiguren
 import urllib
 import json
 import sqlite3
@@ -47,7 +47,7 @@ html = '''
     <head lang="en">
         <title>"pagetitle"</title>
         <meta charset="UTF-8">
-        <meta name="description" content="Find the odd one out.">
+        <meta name="description" content="Search results">
         <meta name="author" content="Steven Rexroth">
         <link rel="stylesheet" type="text/css" href="main.css">
     </head>
@@ -62,7 +62,7 @@ conn = sqlite3.connect('figuredb.sqlite')
 cur = conn.cursor()
 cur.execute('''CREATE TABLE IF NOT EXISTS Figures (search TEXT, source TEXT, title TEXT, price TEXT, stock TEXT,image TEXT, PRIMARY KEY(search, source))''')
 
-sitesdict = {"amiami": amiami, "biginjapan": biginjapan, "crunchyroll": crunchyroll, "goodsmilecompany": goodsmilecompany,"hlj": hlj, "kirinhobby": kirinhobby, "nineteenninetynine": nineteenninetynine, "playmoya": playmoya, "mandarake": mandarake, "animeblvd": animeblvd, "nipponyassan": nipponyassan}
+sitesdict = {"amiami": amiami, "biginjapan": biginjapan, "crunchyroll": crunchyroll, "goodsmilecompany": goodsmilecompany,"hlj": hlj, "kirinhobby": kirinhobby, "nineteenninetynine": nineteenninetynine, "playmoya": playmoya, "mandarake": mandarake, "animeblvd": animeblvd, "nipponyassan": nipponyassan, "animefiguren": animefiguren}
 sites = settings[1].split(",")
 usersites = []
 for i in range(concurrent):

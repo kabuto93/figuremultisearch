@@ -1,5 +1,5 @@
 currency=USD
-sites=amiami,biginjapan,crunchyroll,goodsmilecompany,hlj,kirinhobby,nineteenninetynine,playmoya,mandarake,animeblvd,nipponyassan
+sites=amiami,biginjapan,crunchyroll,goodsmilecompany,hlj,kirinhobby,nineteenninetynine,playmoya,mandarake,animeblvd,nipponyassan,animefiguren
 
 Sites:
 AmiAmi: amiami
@@ -13,3 +13,4 @@ Playmoya: playmoya
 Madarake: mandarake
 Anime Boulevard: animeblvd
 Nippon-Yassan: nipponyassan
+Anime Figuren: animefiguren
