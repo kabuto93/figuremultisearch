@@ -9,7 +9,7 @@ def searchfunction(searchterm):
         url = baseurl + urllib.urlencode({"keyword":searchterm})
         info = urllib.urlopen(url).read()
         figures = re.findall('<div class="basic".+?stock">(.+?)"category"', info, flags=re.DOTALL | re.UNICODE)
-        imageurl = re.findall('src="(.+?)"', figures[0])[1]
+        imageurl = re.findall('src="(.+?)"', figures[0])[0]
         imagename = re.findall('/.+/(.+)', imageurl)[0]
         f = open("images/" + imagename, 'wb')
         f.write(urllib.urlopen(imageurl).read())
