@@ -1,4 +1,4 @@
-from sites import amiami, biginjapan, crunchyroll, goodsmilecompany, hlj, kirinhobby, nineteenninetynine, playmoya, mandarake, animeblvd, nipponyassan, animefiguren
+from sites import amiami, biginjapan, crunchyroll, goodsmilecompany, hlj, kirinhobby, nineteenninetynine, playmoya, mandarake, animeblvd, nipponyassan, animefiguren, animeisland, animegami
 import urllib
 import json
 import sqlite3
@@ -24,6 +24,7 @@ def doWork():
 
 
 def doSomethingWithResult(figure):
+    global html
     if figure["title"] == "Figure not Found":
         pass
     else:
@@ -41,6 +42,7 @@ fh.close()
 basecur = "JPY"
 targetcur = settings[0]
 search = raw_input()
+global html
 html = '''
     <!DOCTYPE html>
     <html>
@@ -58,11 +60,11 @@ html += '''
 <h1>"search"</h1>
 '''
 html = html.replace('"search"', search)
-conn = sqlite3.connect('figuredb.sqlite')
-cur = conn.cursor()
-cur.execute('''CREATE TABLE IF NOT EXISTS Figures (search TEXT, source TEXT, title TEXT, price TEXT, stock TEXT,image TEXT, PRIMARY KEY(search, source))''')
+# conn = sqlite3.connect('figuredb.sqlite')
+# cur = conn.cursor()
+# cur.execute('''CREATE TABLE IF NOT EXISTS Figures (search TEXT, source TEXT, title TEXT, price TEXT, stock TEXT,image TEXT, PRIMARY KEY(search, source))''')
 
-sitesdict = {"amiami": amiami, "biginjapan": biginjapan, "crunchyroll": crunchyroll, "goodsmilecompany": goodsmilecompany,"hlj": hlj, "kirinhobby": kirinhobby, "nineteenninetynine": nineteenninetynine, "playmoya": playmoya, "mandarake": mandarake, "animeblvd": animeblvd, "nipponyassan": nipponyassan, "animefiguren": animefiguren}
+sitesdict = {"amiami": amiami, "biginjapan": biginjapan, "crunchyroll": crunchyroll, "goodsmilecompany": goodsmilecompany,"hlj": hlj, "kirinhobby": kirinhobby, "nineteenninetynine": nineteenninetynine, "playmoya": playmoya, "mandarake": mandarake, "animeblvd": animeblvd, "nipponyassan": nipponyassan, "animefiguren": animefiguren, "animeisland": animeisland, "animegami": animegami}
 sites = settings[1].split(",")
 usersites = []
 for i in range(concurrent):
@@ -84,8 +86,8 @@ for item in figurelist:
     results.append([item["source"], item["title"], item["price"], item["stock"], item["image"]])
 for item in results:
     print "Site: " + item[0] + " | Item: " + item[1] + " | Price: " + item[2] + targetcur + " | Status: " + item[3]
-    cur.execute('''INSERT OR IGNORE INTO Figures (search, source, title, price, stock, image) VALUES ( ?, ?, ?, ?, ?, ? )''', (buffer(search), buffer(item[0]), buffer(item[1]), buffer(item[2]), buffer(item[3]), buffer(item[4])))
-    cur.execute('''UPDATE Figures SET title = ?, price = ?, stock = ?, image = ? WHERE search = ? AND source = ?''', (buffer(item[1]), buffer(item[2]), buffer(item[3]), buffer(item[4]), buffer(search), buffer(item[0])))
+#     cur.execute('''INSERT OR IGNORE INTO Figures (search, source, title, price, stock, image) VALUES ( ?, ?, ?, ?, ?, ? )''', (buffer(search), buffer(item[0]), buffer(item[1]), buffer(item[2]), buffer(item[3]), buffer(item[4])))
+#     cur.execute('''UPDATE Figures SET title = ?, price = ?, stock = ?, image = ? WHERE search = ? AND source = ?''', (buffer(item[1]), buffer(item[2]), buffer(item[3]), buffer(item[4]), buffer(search), buffer(item[0])))
     html += '<fieldset><legend>"source"</legend><table><tr><td id="img"><label><img src="image name" /></label></td><td id="big"><label>"title"</label></td><td><label>"price"</label></td><td><label>"stock"</label></td></tr></table></fieldset>'
     html = html.replace('"source"', item[0])
     html = html.replace('"image name"', "images/" + item[4].replace(" ", "%20"))
@@ -95,4 +97,4 @@ for item in results:
 f = open(search + ".html", "wb")
 f.write(html)
 f.close
-conn.commit()
+# conn.commit()

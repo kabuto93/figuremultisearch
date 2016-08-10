@@ -21,3 +21,4 @@ def searchfunction(searchterm):
         return figure
     except:
         return {"title": "Figure not Found"}
+
