@@ -10,7 +10,7 @@ def searchfunction(searchterm):
         figures = re.findall('<td class="product_box">(.+?)</td>', info, flags=re.DOTALL)
         imageurl = re.findall('img src="(.+?)"', figures[0])[0]
         imagename = re.findall('/.+/(.+)', imageurl)[0]
-        f = open("images/" + imagename, 'wb')
+        f = open("html/images/" + imagename, 'wb')
         f.write(urllib.urlopen(imageurl).read())
         f.close
         figure = {"title": re.findall('<.+?product_name_list">.+?>(.+?)<', figures[0])[0],

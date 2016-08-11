@@ -10,7 +10,7 @@ def searchfunction(searchterm):
         figures = re.findall('productGridI.+?>(.+?)productG', info, flags=re.DOTALL)
         imageurl = "http://goodsmileshop.com/" + re.findall('src="(.+?)"', figures[0])[0]
         imagename = "goodsmile" + searchterm + ".jpg"
-        f = open("images/" + imagename, 'wb')
+        f = open("html/images/" + imagename, 'wb')
         f.write(urllib.urlopen(imageurl).read())
         f.close
         figure = {"title": re.findall('3>(.+?)<', figures[0])[0],

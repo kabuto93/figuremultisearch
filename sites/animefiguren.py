@@ -12,7 +12,7 @@ def searchfunction(searchterm):
         figures = re.findall('pictureBox(.+?)\*', info, flags=re.DOTALL)
         imageurl = re.findall('src="(.+?)"', figures[0])
         imagename = re.findall('/.+/(.+)', imageurl[0])[0]
-        f = open("images/" + imagename, 'wb')
+        f = open("html/images/" + imagename, 'wb')
         f.write(urllib.urlopen(imageurl[0]).read())
         f.close
         price = re.findall(r'"price">.+?\b.+?>.+?\b.+?>(.+)', figures[0], flags=re.DOTALL)[0].strip()[:-3].replace(",", ".")

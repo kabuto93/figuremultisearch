@@ -5,6 +5,8 @@ import sqlite3
 from threading import Thread
 import httplib, sys
 from Queue import Queue
+from os import listdir
+from os.path import isfile, join
 
 
 global search
@@ -95,7 +97,15 @@ for item in results:
     html = html.replace('"title"', item[1])
     html = html.replace('"price"', item[2])
     html = html.replace('"stock"', item[3])
-f = open(search + ".html", "wb")
+f = open("html/" + search + ".html", "wb")
 f.write(html)
 f.close
+html2 = ""
+f2 = open("searches.html", "wb")
+onlyfiles = [f for f in listdir("html/") if isfile(join("html/", f))]
+for file in onlyfiles:
+    if file != "main.css":
+        html2 += '<a href="html/' + file + '">' + file[:-5] + '</a><br />'
+f2.write(html2)
+f2.close()
 # conn.commit()

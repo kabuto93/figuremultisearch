@@ -10,7 +10,7 @@ def searchfunction(searchterm):
         figures = re.findall('<table id="masterBody_ilList_lvList_ctrl0_tblItemList_0" width="815">(.+?)Add to Wish List', info, flags=re.DOTALL)
         imageurl = "http://www.1999.co.jp" + re.findall('src="(.+?)"', figures[0])[0]
         imagename = re.findall('/.+/(.+)', imageurl)[0]
-        f = open("images/" + imagename, 'wb')
+        f = open("html/images/" + imagename, 'wb')
         f.write(urllib.urlopen(imageurl).read())
         f.close
         figure = {"title": re.findall('<span id="masterBody_ilList_lvList_ctrl0_lblItemName_0">(.+?)<\/span>', figures[0])[0],

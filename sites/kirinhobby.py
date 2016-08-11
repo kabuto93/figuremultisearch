@@ -11,7 +11,7 @@ def searchfunction(searchterm):
         figures = re.findall('Listing-d(.+?)width="60"', info, flags=re.DOTALL)
         imageurl = "http://www.kirinhobby.com/shop/" + re.findall('src="(.+?)"', figures[0])[0]
         imagename = re.findall('/.+/(.+)', imageurl)[0]
-        f = open("images/" + imagename, 'wb')
+        f = open("html/images/" + imagename, 'wb')
         f.write(urllib.urlopen(imageurl).read())
         f.close
         figure = {"title": re.findall('alt="(.+?)" t', figures[0])[0],

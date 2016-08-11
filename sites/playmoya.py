@@ -11,7 +11,7 @@ def searchfunction(searchterm):
         figures = re.findall('"centerBoxContentsProducts(.+?<div>.+?)</div>', info, flags=re.DOTALL)
         imageurl = "http://plamoya.com/" + re.findall('src="(.+?)"', figures[0])[0]
         imagename = re.findall('/.+/(.+)', imageurl)[0]
-        f = open("images/" + imagename, 'wb')
+        f = open("html/images/" + imagename, 'wb')
         f.write(urllib.urlopen(imageurl).read())
         f.close
         stockurl = re.findall('href="(.+?)">', figures[0])[0]

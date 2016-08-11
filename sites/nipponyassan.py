@@ -38,8 +38,7 @@ def searchfunction(searchterm):
         except urllib2.HTTPError, e:
             print e.fp.read()
 
-
-        f = open("images/" + imagename, 'wb')
+        f = open("html/images/" + imagename, 'wb')
         f.write(page.read())
         f.close()
         return figure
