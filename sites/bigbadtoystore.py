@@ -18,7 +18,8 @@ def searchfunction(searchterm):
                   "price": re.findall('lblPrice">\$(.+?)<', figures[0])[0].replace(",", ""),
                   "stock": re.findall('lblStatus">.+?>(.+?)<', figures[0])[0],
                   "image": imagename,
-                  "source": "Big Bad Toy Store"}
+                  "source": "Big Bad Toy Store",
+                  "link": "http://www.bigbadtoystore.com/bbts/" + re.findall('href="(p.+?)"', figures[0])[0].replace("amp;", "")}
         exchangerate = json.loads(urllib.urlopen("http://api.fixer.io/latest?base=USD").read())
         figure["price"] = str(int(float(figure["price"]) * exchangerate["rates"]["JPY"]))
         return figure

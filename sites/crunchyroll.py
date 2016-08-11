@@ -18,7 +18,8 @@ def searchfunction(searchterm):
                   "price": re.findall('ce">\n.+\$(.+)', figures[0])[0].replace(",", ""),
                   "stock": "CR doesn't give stock info",
                   "image": imagename,
-                  "source": "Crunchyroll"}
+                  "source": "Crunchyroll",
+                  "link": "http://www.crunchyroll.com" + re.findall('href="(.+?)"', figures[0])[0]}
         exchangerate = json.loads(urllib.urlopen("http://api.fixer.io/latest?base=USD").read())
         figure["price"] = str(int(float(figure["price"]) * exchangerate["rates"]["JPY"]))
         return figure

@@ -19,7 +19,8 @@ def searchfunction(searchterm):
                   "price": re.findall('<div class="price">.+?>(.+?)円', figures[0], flags=re.DOTALL | re.UNICODE)[0].replace(",", ""),
                   "stock": re.findall('(.+?)<', figures[0], flags=re.DOTALL | re.UNICODE)[0],
                   "image": imagename,
-                  "source": "Mandarake"}
+                  "source": "Mandarake",
+                  "link": "https://order.mandarake.co.jp" + re.findall('href="(.+?)"', figures[0])[0]}
         return figure
     except:
         return {"title": "Figure not Found"}

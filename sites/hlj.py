@@ -17,7 +17,8 @@ def searchfunction(searchterm):
                   "price": re.findall('&yen;(.+?) \\n<', figures[0])[0].replace(",", ""),
                   "stock": "",
                   "image": imagename,
-                  "source": "HobbyLink Japan"}
+                  "source": "HobbyLink Japan",
+                  "link": re.findall('href="(.+?)"', figures[0])[0]}
         try:
             figure["stock"] = re.findall('<span class="bold base-text.+?\\n(.+?)<span', figures[0])[0].replace("<br />", "")
         except:

@@ -83,13 +83,14 @@ except KeyboardInterrupt:
     sys.exit(1)
 for item in figurelist:
     item["price"] = str(round(float(item["price"]) * exchangerate["rates"][targetcur.upper()], 2))
-    results.append([item["source"], item["title"], item["price"], item["stock"], item["image"]])
+    results.append([item["source"], item["title"], item["price"], item["stock"], item["image"], item["link"]])
 for item in results:
     print "Site: " + item[0] + " | Item: " + item[1] + " | Price: " + item[2] + targetcur + " | Status: " + item[3]
 #     cur.execute('''INSERT OR IGNORE INTO Figures (search, source, title, price, stock, image) VALUES ( ?, ?, ?, ?, ?, ? )''', (buffer(search), buffer(item[0]), buffer(item[1]), buffer(item[2]), buffer(item[3]), buffer(item[4])))
 #     cur.execute('''UPDATE Figures SET title = ?, price = ?, stock = ?, image = ? WHERE search = ? AND source = ?''', (buffer(item[1]), buffer(item[2]), buffer(item[3]), buffer(item[4]), buffer(search), buffer(item[0])))
-    html += '<fieldset><legend>"source"</legend><table><tr><td id="img"><label><img src="image name" /></label></td><td id="big"><label>"title"</label></td><td><label>"price"</label></td><td><label>"stock"</label></td></tr></table></fieldset>'
+    html += '<fieldset><legend>"source"</legend><table><tr><td id="img"><label><a href=""sitelink""><img src=""image name"" /></a></label></td><td id="big"><label>"title"</label></td><td><label>"price"</label></td><td><label>"stock"</label></td></tr></table></fieldset>'
     html = html.replace('"source"', item[0])
+    html = html.replace('"sitelink"', item[5])
     html = html.replace('"image name"', "images/" + item[4].replace(" ", "%20"))
     html = html.replace('"title"', item[1])
     html = html.replace('"price"', item[2])

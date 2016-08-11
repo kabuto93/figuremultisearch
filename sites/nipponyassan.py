@@ -29,7 +29,8 @@ def searchfunction(searchterm):
                   "price": price.replace(",", ""),
                   "stock": stock,
                   "image": imagename,
-                  "source": "Nippon-Yassan"}
+                  "source": "Nippon-Yassan",
+                  "link": re.findall('href="(.+?)"', figures[0])[0]}
         req2 = urllib2.Request(imageurl, headers=hdr)
 
         try:

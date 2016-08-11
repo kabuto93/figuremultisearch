@@ -17,7 +17,8 @@ def searchfunction(searchterm):
                   "price": re.findall('display: inline;">(.+?)<', figures[0])[0].replace(" ", "")[:-2],
                   "stock": re.findall('ity">(.+?)<', figures[0])[0],
                   "image": imagename,
-                  "source": "Big in Japan"}
+                  "source": "Big in Japan",
+                  "link": re.findall('href="(.+?)"', figures[0])[0]}
         return figure
     except:
         return {"title": "Figure not Found"}

@@ -17,7 +17,8 @@ def searchfunction(searchterm):
                   "price": re.findall('price.+?> ..(.+?)<', figures[0])[0].replace(",", ""),
                   "stock": re.findall('<li.+?>\\n\\t\\t\\t\\t\\t\\t\\t\\t\\t\\t\\t\\t(.+?)<', figures[0])[0],
                   "image": imagename,
-                  "source": "Good Smile Company"}
+                  "source": "Good Smile Company",
+                  "link": "http://goodsmileshop.com" + re.findall('href="(.+?)"', figures[0])[0]}
         return figure
     except:
         return {"title": "Figure not Found"}

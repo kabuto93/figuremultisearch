@@ -17,7 +17,8 @@ def searchfunction(searchterm):
                   "price": re.findall('font-weight: bold;">(.+?) yen', figures[0])[0].replace(",", ""),
                   "stock": "",
                   "image": imagename,
-                  "source": "1999.co.jp"}
+                  "source": "1999.co.jp",
+                  "link": "http://www.1999.co.jp" + re.findall('href="(.+?)"', figures[0])[0]}
         try:
             re.findall('(Sold Out)', figures[0])[0]
             figure["stock"] = "Sold out"
