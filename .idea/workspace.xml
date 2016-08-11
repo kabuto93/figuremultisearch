@@ -2,28 +2,8 @@
 <project version="4">
   <component name="ChangeListManager">
     <list default="true" id="a4297ee7-0786-4df1-a985-1a073cb11422" name="Default" comment="">
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/html/main.css" />
-      <change type="DELETED" beforePath="$PROJECT_DIR$/images/blank" afterPath="" />
-      <change type="DELETED" beforePath="$PROJECT_DIR$/main.css" afterPath="" />
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/html/images/blank" />
       <change type="MODIFICATION" beforePath="$PROJECT_DIR$/.idea/workspace.xml" afterPath="$PROJECT_DIR$/.idea/workspace.xml" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/main.py" afterPath="$PROJECT_DIR$/main.py" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/sites/amiami.py" afterPath="$PROJECT_DIR$/sites/amiami.py" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/sites/animeblvd.py" afterPath="$PROJECT_DIR$/sites/animeblvd.py" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/sites/animefiguren.py" afterPath="$PROJECT_DIR$/sites/animefiguren.py" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/sites/animegami.py" afterPath="$PROJECT_DIR$/sites/animegami.py" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/sites/animeisland.py" afterPath="$PROJECT_DIR$/sites/animeisland.py" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/sites/bigbadtoystore.py" afterPath="$PROJECT_DIR$/sites/bigbadtoystore.py" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/sites/biginjapan.py" afterPath="$PROJECT_DIR$/sites/biginjapan.py" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/sites/crunchyroll.py" afterPath="$PROJECT_DIR$/sites/crunchyroll.py" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/sites/figuya.py" afterPath="$PROJECT_DIR$/sites/figuya.py" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/sites/goodsmilecompany.py" afterPath="$PROJECT_DIR$/sites/goodsmilecompany.py" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/sites/hlj.py" afterPath="$PROJECT_DIR$/sites/hlj.py" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/sites/ixudeviance.py" afterPath="$PROJECT_DIR$/sites/ixudeviance.py" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/sites/kirinhobby.py" afterPath="$PROJECT_DIR$/sites/kirinhobby.py" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/sites/mandarake.py" afterPath="$PROJECT_DIR$/sites/mandarake.py" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/sites/nineteenninetynine.py" afterPath="$PROJECT_DIR$/sites/nineteenninetynine.py" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/sites/nipponyassan.py" afterPath="$PROJECT_DIR$/sites/nipponyassan.py" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/sites/playmoya.py" afterPath="$PROJECT_DIR$/sites/playmoya.py" />
     </list>
     <ignored path="FigureSearch.iws" />
     <ignored path=".idea/workspace.xml" />
@@ -47,8 +27,8 @@
       <file leaf-file-name="main.py" pinned="false" current-in-tab="true">
         <entry file="file://$PROJECT_DIR$/main.py">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="377">
-              <caret line="109" column="10" selection-start-line="109" selection-start-column="10" selection-end-line="109" selection-end-column="10" />
+            <state relative-caret-position="156">
+              <caret line="96" column="12" selection-start-line="96" selection-start-column="12" selection-end-line="96" selection-end-column="12" />
               <folding>
                 <element signature="e#0#225#0" expanded="true" />
               </folding>
@@ -211,6 +191,24 @@
             </PATH_ELEMENT>
             <PATH_ELEMENT>
               <option name="myItemId" value="html" />
+              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
+            </PATH_ELEMENT>
+          </PATH>
+          <PATH>
+            <PATH_ELEMENT>
+              <option name="myItemId" value="FigureSearch" />
+              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.ProjectViewProjectNode" />
+            </PATH_ELEMENT>
+            <PATH_ELEMENT>
+              <option name="myItemId" value="FigureSearch" />
+              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
+            </PATH_ELEMENT>
+            <PATH_ELEMENT>
+              <option name="myItemId" value="html" />
+              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
+            </PATH_ELEMENT>
+            <PATH_ELEMENT>
+              <option name="myItemId" value="images" />
               <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
             </PATH_ELEMENT>
           </PATH>
@@ -607,19 +605,26 @@
       <option name="project" value="LOCAL" />
       <updated>1470948603208</updated>
     </task>
-    <option name="localTasksCounter" value="17" />
+    <task id="LOCAL-00017" summary="Change to the way searches are returned">
+      <created>1470955548911</created>
+      <option name="number" value="00017" />
+      <option name="presentableId" value="LOCAL-00017" />
+      <option name="project" value="LOCAL" />
+      <updated>1470955548911</updated>
+    </task>
+    <option name="localTasksCounter" value="18" />
     <servers />
   </component>
   <component name="ToolWindowManager">
     <frame x="-8" y="-8" width="1382" height="784" extended-state="6" />
     <editor active="false" />
     <layout>
-      <window_info id="Project" active="false" anchor="left" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="true" show_stripe_button="true" weight="0.2489019" sideWeight="0.5" order="1" side_tool="false" content_ui="combo" />
+      <window_info id="Project" active="true" anchor="left" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="true" show_stripe_button="true" weight="0.2489019" sideWeight="0.5" order="1" side_tool="false" content_ui="combo" />
       <window_info id="TODO" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.33" sideWeight="0.5" order="10" side_tool="false" content_ui="tabs" />
       <window_info id="Event Log" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.32937685" sideWeight="0.5" order="0" side_tool="true" content_ui="tabs" />
       <window_info id="Python Console" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.33" sideWeight="0.5" order="1" side_tool="false" content_ui="tabs" />
       <window_info id="Version Control" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.32932332" sideWeight="0.5" order="2" side_tool="false" content_ui="tabs" />
-      <window_info id="Run" active="true" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="true" show_stripe_button="true" weight="0.17655787" sideWeight="0.5" order="6" side_tool="false" content_ui="tabs" />
+      <window_info id="Run" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="true" show_stripe_button="true" weight="0.17655787" sideWeight="0.5" order="6" side_tool="false" content_ui="tabs" />
       <window_info id="Structure" active="false" anchor="left" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.25" sideWeight="0.5" order="2" side_tool="false" content_ui="tabs" />
       <window_info id="Terminal" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.33" sideWeight="0.5" order="3" side_tool="false" content_ui="tabs" />
       <window_info id="Favorites" active="false" anchor="left" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.33" sideWeight="0.5" order="0" side_tool="true" content_ui="tabs" />
@@ -660,7 +665,8 @@
     <MESSAGE value="New sources: Animegami, Anime-Island" />
     <MESSAGE value="New sources: Big Bad Toy Store, Figuya, iXu Deviance" />
     <MESSAGE value="Major update: Clicking the image now links  to the product's page" />
-    <option name="LAST_COMMIT_MESSAGE" value="Major update: Clicking the image now links  to the product's page" />
+    <MESSAGE value="Change to the way searches are returned" />
+    <option name="LAST_COMMIT_MESSAGE" value="Change to the way searches are returned" />
   </component>
   <component name="XDebuggerManager">
     <breakpoint-manager>
@@ -1006,8 +1012,8 @@
     </entry>
     <entry file="file://$PROJECT_DIR$/main.py">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="377">
-          <caret line="109" column="10" selection-start-line="109" selection-start-column="10" selection-end-line="109" selection-end-column="10" />
+        <state relative-caret-position="156">
+          <caret line="96" column="12" selection-start-line="96" selection-start-column="12" selection-end-line="96" selection-end-column="12" />
           <folding>
             <element signature="e#0#225#0" expanded="true" />
           </folding>
