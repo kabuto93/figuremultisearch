@@ -1,5 +1,5 @@
 currency=USD
-sites=amiami,biginjapan,crunchyroll,goodsmilecompany,hlj,kirinhobby,nineteenninetynine,playmoya,mandarake,animeblvd,nipponyassan,animefiguren,animeisland,animegami
+sites=amiami,biginjapan,crunchyroll,goodsmilecompany,hlj,kirinhobby,nineteenninetynine,playmoya,mandarake,animeblvd,nipponyassan,animefiguren,animeisland,animegami,bigbadtoystore,figuya,ixudeviance
 
 Sites:
 AmiAmi: amiami
@@ -15,3 +15,6 @@ Anime Boulevard: animeblvd
 Nippon-Yassan: nipponyassan
 Anime Figuren: animefiguren
 Animegami: animegami
+Big Bad Toy Store: bigbadtoystore
+Figuya: figuya
+iXu Deviance: ixudeviance

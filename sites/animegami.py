@@ -19,10 +19,8 @@ def searchfunction(searchterm):
                   "stock": re.findall('span.+<span.+class.+?>(.+?)<', figures[0], flags=re.DOTALL)[0],
                   "image": imagename,
                   "source": "Animegami"}
-        exchangerate = json.loads(urllib.urlopen("http://api.fixer.io/latest?base=USD").read())
+        exchangerate = json.loads(urllib.urlopen("http://api.fixer.io/latest?base=GBP").read())
         figure["price"] = str(int(float(figure["price"]) * exchangerate["rates"]["JPY"]))
         return figure
     except:
         return {"title": "Figure not Found"}
-
-print searchfunction("no game no life rage of bahamut")

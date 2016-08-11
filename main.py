@@ -1,4 +1,4 @@
-from sites import amiami, biginjapan, crunchyroll, goodsmilecompany, hlj, kirinhobby, nineteenninetynine, playmoya, mandarake, animeblvd, nipponyassan, animefiguren, animeisland, animegami
+from sites import amiami, biginjapan, crunchyroll, goodsmilecompany, hlj, kirinhobby, nineteenninetynine, playmoya, mandarake, animeblvd, nipponyassan, animefiguren, animeisland, animegami, bigbadtoystore, figuya, ixudeviance
 import urllib
 import json
 import sqlite3
@@ -64,7 +64,7 @@ html = html.replace('"search"', search)
 # cur = conn.cursor()
 # cur.execute('''CREATE TABLE IF NOT EXISTS Figures (search TEXT, source TEXT, title TEXT, price TEXT, stock TEXT,image TEXT, PRIMARY KEY(search, source))''')
 
-sitesdict = {"amiami": amiami, "biginjapan": biginjapan, "crunchyroll": crunchyroll, "goodsmilecompany": goodsmilecompany,"hlj": hlj, "kirinhobby": kirinhobby, "nineteenninetynine": nineteenninetynine, "playmoya": playmoya, "mandarake": mandarake, "animeblvd": animeblvd, "nipponyassan": nipponyassan, "animefiguren": animefiguren, "animeisland": animeisland, "animegami": animegami}
+sitesdict = {"amiami": amiami, "biginjapan": biginjapan, "crunchyroll": crunchyroll, "goodsmilecompany": goodsmilecompany,"hlj": hlj, "kirinhobby": kirinhobby, "nineteenninetynine": nineteenninetynine, "playmoya": playmoya, "mandarake": mandarake, "animeblvd": animeblvd, "nipponyassan": nipponyassan, "animefiguren": animefiguren, "animeisland": animeisland, "animegami": animegami, "bigbadtoystore": bigbadtoystore, "figuya": figuya, "ixudeviance": ixudeviance}
 sites = settings[1].split(",")
 usersites = []
 for i in range(concurrent):
