@@ -69,7 +69,7 @@ html = '''
         <link href="main.css" rel="stylesheet">
     </head>
     '''
-html = html.replace('"pagetitle"', search.capitalize() + " results")
+html = html.replace('"pagetitle"', search.title() + " Results")
 html += '''
     <body>
         <header class="jumbotron">
@@ -84,7 +84,7 @@ html += '''
 
         <div class="container text-center">
 '''
-html = html.replace('"search"', search.capitalize())
+html = html.replace('"search"', search.title())
 # conn = sqlite3.connect('figuredb.sqlite')
 # cur = conn.cursor()
 # cur.execute('''CREATE TABLE IF NOT EXISTS Figures (search TEXT, source TEXT, title TEXT, price TEXT, stock TEXT,image TEXT, PRIMARY KEY(search, source))''')
@@ -144,19 +144,61 @@ html += '''
         <!-- jQuery (necessary for Bootstrap's JavaScript plugins) -->
         <script src="https://ajax.googleapis.com/ajax/libs/jquery/1.11.3/jquery.min.js"></script>
         <!-- Include all compiled plugins (below), or include individual files as needed -->
-        <script src="js/bootstrap.min.js"></script>
+        <script src="html/js/bootstrap.min.js"></script>
     </body>
 </html>
 '''
 f = open("html/" + search + ".html", "wb")
 f.write(html)
 f.close
-html2 = ""
+html2 = '''
+<!DOCTYPE html>
+<html lang="en">
+
+    <head>
+        <meta charset="utf-8">
+        <meta http-equiv="X-UA-Compatible" content="IE=edge">
+        <meta name="viewport" content="width=device-width, initial-scale=1">
+        <!-- The above 3 meta tags *must* come first in the head; any other head
+             content must come *after* these tags -->
+        <title>Searches</title>
+        <!-- Bootstrap -->
+        <link href="html/css/bootstrap.min.css" rel="stylesheet">
+        <link href="html/css/bootstrap-theme.min.css" rel="stylesheet">
+
+        <!-- HTML5 shim and Respond.js for IE8 support of HTML5 elements and media queries -->
+        <!-- WARNING: Respond.js doesn't work if you view the page via file:// -->
+        <!--[if lt IE 9]>
+        <script src="https://oss.maxcdn.com/html5shiv/3.7.2/html5shiv.min.js"></script>
+        <script src="https://oss.maxcdn.com/respond/1.4.2/respond.min.js"></script>
+        <![endif]-->
+        <link href="html/main.css" rel="stylesheet">
+    </head>
+
+    <body>
+        <div class="container">
+            <div class="row">
+'''
 f2 = open("searches.html", "wb")
 onlyfiles = [f for f in listdir("html/") if isfile(join("html/", f))]
 for file in onlyfiles:
     if file != "main.css":
-        html2 += '<a href="html/' + file + '">' + file[:-5] + '</a><br />'
+        html2 += '''
+                    <div class="col-xs-12 col-sm-3">
+                        <div class="well text-center"><a href=""searchlink""><h3>"search"</h3></a></div>
+                    </div>
+        '''
+        html2 = html2.replace('"searchlink"', "html/" + file)
+        html2 = html2.replace('"search"', file[:-5].title())
+html2 += '''
+            </div>
+        </div>
+        <!-- jQuery (necessary for Bootstrap's JavaScript plugins) -->
+        <script src="https://ajax.googleapis.com/ajax/libs/jquery/1.11.3/jquery.min.js"></script>
+        <!-- Include all compiled plugins (below), or include individual files as needed -->
+        <script src="js/bootstrap.min.js"></script>
+    </body>
+'''
 f2.write(html2)
 f2.close()
 # conn.commit()
