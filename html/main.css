@@ -1,15 +1,10 @@
+.data {
+    height: 150px;
+    display: flex;
+    align-items: center;
+}
+
 img {
-    width:80px;
+    max-height: 100px;
 }
-td {
-    width: 100px;
-    border: solid 1px black;
-    text-align: center;
-}
-#big {
-    width: 500px;
-}
-#img {
-    width: 80px;
-    border: none;
-}
+

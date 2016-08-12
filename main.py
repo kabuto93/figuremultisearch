@@ -47,21 +47,44 @@ search = raw_input()
 global html
 html = '''
     <!DOCTYPE html>
-    <html>
-    <head lang="en">
+    <html lang="en">
+
+    <head>
+        <meta charset="utf-8">
+        <meta http-equiv="X-UA-Compatible" content="IE=edge">
+        <meta name="viewport" content="width=device-width, initial-scale=1">
+        <!-- The above 3 meta tags *must* come first in the head; any other head
+             content must come *after* these tags -->
         <title>"pagetitle"</title>
-        <meta charset="UTF-8">
-        <meta name="description" content="Search results">
-        <meta name="author" content="Steven Rexroth">
-        <link rel="stylesheet" type="text/css" href="main.css">
+        <!-- Bootstrap -->
+        <link href="css/bootstrap.min.css" rel="stylesheet">
+        <link href="css/bootstrap-theme.min.css" rel="stylesheet">
+
+        <!-- HTML5 shim and Respond.js for IE8 support of HTML5 elements and media queries -->
+        <!-- WARNING: Respond.js doesn't work if you view the page via file:// -->
+        <!--[if lt IE 9]>
+        <script src="https://oss.maxcdn.com/html5shiv/3.7.2/html5shiv.min.js"></script>
+        <script src="https://oss.maxcdn.com/respond/1.4.2/respond.min.js"></script>
+        <![endif]-->
+        <link href="main.css" rel="stylesheet">
     </head>
-    <body>
     '''
-html = html.replace('"pagetitle"', search + " results")
+html = html.replace('"pagetitle"', search.capitalize() + " results")
 html += '''
-<h1>"search"</h1>
+    <body>
+        <header class="jumbotron">
+            <div class="container text-center text-center">
+                <div class="row row-header">
+                    <div class="col-xs-12">
+                        <h1>"search"</h1>
+                    </div>
+                </div>
+            </div>
+        </header>
+
+        <div class="container text-center">
 '''
-html = html.replace('"search"', search)
+html = html.replace('"search"', search.capitalize())
 # conn = sqlite3.connect('figuredb.sqlite')
 # cur = conn.cursor()
 # cur.execute('''CREATE TABLE IF NOT EXISTS Figures (search TEXT, source TEXT, title TEXT, price TEXT, stock TEXT,image TEXT, PRIMARY KEY(search, source))''')
@@ -90,13 +113,41 @@ for item in results:
     print "Site: " + item[0] + " | Item: " + item[1] + " | Price: " + item[2] + targetcur + " | Status: " + item[3]
 #     cur.execute('''INSERT OR IGNORE INTO Figures (search, source, title, price, stock, image) VALUES ( ?, ?, ?, ?, ?, ? )''', (buffer(search), buffer(item[0]), buffer(item[1]), buffer(item[2]), buffer(item[3]), buffer(item[4])))
 #     cur.execute('''UPDATE Figures SET title = ?, price = ?, stock = ?, image = ? WHERE search = ? AND source = ?''', (buffer(item[1]), buffer(item[2]), buffer(item[3]), buffer(item[4]), buffer(search), buffer(item[0])))
-    html += '<fieldset><legend>"source"</legend><table><tr><td id="img"><label><a href=""sitelink""><img src=""image name"" /></a></label></td><td id="big"><label>"title"</label></td><td><label>"price"</label></td><td><label>"stock"</label></td></tr></table></fieldset>'
+    html += '''
+            <div class="row text-center">
+                <h1 class="text-center">"source"</h1>
+            </div>
+            <div class="row text-center">
+                <div class="col-xs-12 col-sm-2 data well well-lg text-center">
+                    <a href=""sitelink""><img src=""imagename"" class="img-responsive" /></a>
+                </div>
+                <div class="col-xs-12 col-sm-6 data well well-lg text-center">
+                    "title"
+                </div>
+                <div class="col-xs-6 col-sm-2 data well well-lg text-center">
+                    "price"
+                </div>
+                <div class="col-xs-6 col-sm-2 data well well-lg text-center">
+                    "stock"
+                </div>
+            </div>
+    '''
     html = html.replace('"source"', item[0])
     html = html.replace('"sitelink"', item[5])
-    html = html.replace('"image name"', "images/" + item[4].replace(" ", "%20"))
+    html = html.replace('"imagename"', "images/" + item[4].replace(" ", "%20"))
     html = html.replace('"title"', item[1])
     html = html.replace('"price"', item[2])
     html = html.replace('"stock"', item[3])
+html += '''
+        </div>
+
+        <!-- jQuery (necessary for Bootstrap's JavaScript plugins) -->
+        <script src="https://ajax.googleapis.com/ajax/libs/jquery/1.11.3/jquery.min.js"></script>
+        <!-- Include all compiled plugins (below), or include individual files as needed -->
+        <script src="js/bootstrap.min.js"></script>
+    </body>
+</html>
+'''
 f = open("html/" + search + ".html", "wb")
 f.write(html)
 f.close
